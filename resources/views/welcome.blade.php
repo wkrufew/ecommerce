@@ -85,7 +85,7 @@
                     {{ __('¿DESEAS SABER MAS SOBRE NOSOTROS Y QUE TENEMOS PARA OFRECERTE?') }}
                 </h2>
                 <div class="mt-3">
-                    <a aria-label="novedades" class="rounded-full uppercase bg-none border-2 border-white text-white px-4 py-3 font-medium text-xs hover:text-white hover:bg-[#60A3BD] transition-all"
+                    <a aria-label="Servicio que ofrecemos" class="rounded-full uppercase bg-none border-2 border-white text-white px-4 py-3 font-medium text-xs hover:text-white hover:bg-[#56567f] transition-all"
                         href="{{ route('services.index') }}">
                         {{ __('Ver Servicios') }}
                     </a>

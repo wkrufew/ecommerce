@@ -13,7 +13,7 @@ class OfertProduct extends Component
     public function loadProduct()
     {
         $this->products = Cache::remember('oferts-featured', 60*60*24, function () {
-            return Product::with('images')->where('status', 2)->where('discount', '>', 0)->take(15)->get();
+            return Product::select('id','slug','name','price','discount')->with('images')->where('status', 2)->where('discount', '>', 0)->take(10)->get();
         });
         
         $this->emit('glider-2');

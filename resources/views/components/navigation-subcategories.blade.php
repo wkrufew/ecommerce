@@ -6,7 +6,7 @@
         <ul class="space-y-1">
             @forelse ($category->subcategories as $subcategory)
                 <li>
-                    <a href="{{route('categories.show', $category ) . '?subcategoria=' . $subcategory->slug }}" class="inline-block text-sm hover:text-[#60A3BD]">
+                    <a aria-label="Abrir la subcategoria {{$subcategory->name}}" href="{{route('categories.show', $category ) . '?subcategoria=' . $subcategory->slug }}" class="inline-block text-sm hover:text-[#60A3BD]">
                         {{$subcategory->name}}
                     </a>
                 </li>

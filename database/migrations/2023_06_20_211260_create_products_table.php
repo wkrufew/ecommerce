@@ -20,7 +20,6 @@ return new class extends Migration
             $table->longText('description');
             $table->float('price');
             $table->float('discount')->default(0);
-            $table->boolean('nuevo')->default(false);
             $table->boolean('destacado')->default(false);
             $table->text('ficha')->nullable();
             $table->text('video')->nullable();
@@ -37,6 +36,8 @@ return new class extends Migration
 
             $table->index('subcategory_id');
             $table->index('brand_id');
+            $table->index('status');
+            $table->index('destacado');
         });
     }
 

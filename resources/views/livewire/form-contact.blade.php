@@ -119,9 +119,16 @@
                             <button wire:loading.remove type="submit" class="w-full px-6 py-3 mt-6 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-[#60A3BD] rounded-md hover:bg-[#60A3BD]/75 focus:outline-none focus:ring focus:ring-[#60A3BD] focus:ring-opacity-50">
                                 Enviar
                             </button>
-
-                            <div wire:loading wire:target="saveContact" class="font-medium text-sm text-center w-full mx-auto mt-6 py-3">
-                                <span>Enviando el formulario...</span>
+                            <div wire:loading wire:target="saveContact">
+                                <div class="loader" id="loader-6">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <div class="flex justify-center items-center absolute mt-32">
+                                        <p class="text-[#3e3e66] text-sm font-semibold text-center relative">Enviando el formulario...</p>
+                                    </div>
+                                </div>
                             </div>
                         </form>
                     </div>

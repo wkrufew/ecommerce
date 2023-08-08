@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     public function show(Product $product): View {
-
         $product->load('characteristics', 'images', 'reviews');
         return view('products.show', compact('product'));
     }

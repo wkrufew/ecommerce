@@ -12,32 +12,30 @@ use App\Http\Livewire\ShoppingCart;
 use App\Http\Livewire\CreateOrder;
 use App\Http\Livewire\FormContact;
 use Illuminate\Support\Facades\Artisan;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-Route::get('/', WelcomeController::class)->name('home');
-Route::get('categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
-Route::get('products/{product}', [ProductController::class, 'show'])->name('products.show');
-/* SERVICES */
-Route::get('services', [ServiceController::class, 'index'])->name('services.index');
-Route::get('services/{service}', [ServiceController::class, 'show'])->name('services.show');
-/* BUSCADOR */
-Route::get('search', SearchController::class)->name('search');
-/* CARRITO DE COMPRAS */
-Route::get('shopping-cart', ShoppingCart::class)->name('shopping-cart');
-/* FORMULARIO DE CONTACTO */
-Route::get('contact', FormContact::class)->name('form-contact');
 
-Route::get('/about', function () {
-    return view('about');
-})->name('about');
+Route::middleware('cache.headers:public;max_age=86400;etag')->group(function () {
+    /* HOME */
+    Route::get('/', WelcomeController::class)->name('home');
+    /* CATEGORIAS Y FILTROS */
+    Route::get('categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
+    /* PRODUCTOS */
+    Route::get('products/{product}', [ProductController::class, 'show'])->name('products.show');
+    /* SERVICES */
+    Route::get('services', [ServiceController::class, 'index'])->name('services.index');
+    Route::get('services/{service}', [ServiceController::class, 'show'])->name('services.show');
+    /* BUSCADOR */
+    Route::get('search', SearchController::class)->name('search');
+    /* CARRITO DE COMPRAS */
+    Route::get('shopping-cart', ShoppingCart::class)->name('shopping-cart');
+    /* FORMULARIO DE CONTACTO */
+    Route::get('contact', FormContact::class)->name('form-contact');
+    /* NOSOTROS */
+    Route::get('/about', function () {
+        return view('about');
+    })->name('about');
+});
+
+
 
 Route::middleware(['auth'])->group(function(){
     Route::get('orders/create', CreateOrder::class)->name('orders.create');

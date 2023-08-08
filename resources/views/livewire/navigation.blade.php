@@ -1,8 +1,8 @@
-<nav style="z-index: 999" class="bg-white w-full sticky top-0 z-50 rounded-b-xl shadow" x-data="{ open: false }" @keydown.window.escape="open = false" x-init="() => { $watch('open', value => toggleScrollLock(value)) }">
+<nav style="z-index: 999" class="bg-white w-full sticky top-0 z-50 rounded-b-xl shadow" x-data="{ open: false }" @keydown.window.escape="open = false" {{-- x-init="() => { $watch('open', value => toggleScrollLock(value)) }" --}}>
     <div class="contenedor flex justify-between items-center h-14 space-x-6">
         <!-- Logo -->
         <div class="flex items-center space-x-4 h-full">
-            <a wire:click="$emit('switchingCategoryEvent')" :class="{'md:bg-opacity-100 text-[#3E3E66]': open, 'md:bg-opacity-10 text-[#60A3BD]': !open }" class="flex flex-col overflow-hidden select-none cursor-pointer px-2 items-center justify-center my-auto md:bg-white  md:bg-opacity-25 text-[#60A3BD] h-full"
+            <a aria-label="Abrir el menu de categorias" wire:click="$emit('switchingCategoryEvent')" :class="{'md:bg-opacity-100 text-[#3E3E66]': open, 'md:bg-opacity-10 text-[#60A3BD]': !open }" class="flex flex-col overflow-hidden select-none cursor-pointer px-2 items-center justify-center my-auto md:bg-white  md:bg-opacity-25 text-[#60A3BD] h-full"
                 @click="open = !open">
                 <div class="space-y-1">
                     <span :class="{ 'translate-y-2 rotate-45 bg-[#3E3E66]': open, 'bg-[#60A3BD]': !open }"
@@ -16,7 +16,7 @@
             </a>
             <div class="hidden md:block">
                 <div class="shrink-0 flex items-center">
-                    <a href="/">
+                    <a aria-label="Ir al inicio de la pagina" href="/">
                         <x-application-mark class="block h-9 w-auto" />
                     </a>
                 </div>
@@ -24,7 +24,7 @@
         </div>
         <div class="block md:hidden">
             <div class="shrink-0 flex items-center">
-                <a href="/">
+                <a aria-label="Ir al inicio de la pagina" href="/">
                     <x-application-mark class="block h-9 w-auto" />
                 </a>
             </div>
@@ -58,7 +58,7 @@
                 @auth
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
-                            <button
+                            <button  aria-label="Opciones del usuario"
                                 class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
                                 <img class="h-7 w-7 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}"
                                     alt="{{ Auth::user()->name }}" />
@@ -70,18 +70,18 @@
                                 {{ __('Manage Account') }}
                             </div>
 
-                            <x-dropdown-link href="{{ route('profile.show') }}">
+                            <x-dropdown-link aria-label="Abrir la opcion del perfil" href="{{ route('profile.show') }}">
                                 {{ __('Profile') }}
                             </x-dropdown-link>
 
                             @auth
-                                <x-dropdown-link href="{{ route('orders.index') }}">
+                                <x-dropdown-link aria-label="Abrir mis ordenes" href="{{ route('orders.index') }}">
                                     Mis ordenes
                                 </x-dropdown-link>
                             @endauth
     
                             @role('admin')
-                                <x-dropdown-link href="{{ route('admin.index') }}">
+                                <x-dropdown-link  aria-label="Abrir la opcion de administrador" href="{{ route('admin.index') }}">
                                     Administrador
                                 </x-dropdown-link>
                             @endrole
@@ -92,7 +92,7 @@
                             <form method="POST" action="{{ route('logout') }}" x-data>
                                 @csrf
 
-                                <x-dropdown-link href="{{ route('logout') }}" @click.prevent="$root.submit();">
+                                <x-dropdown-link aria-label="Cerrar sesion" href="{{ route('logout') }}" @click.prevent="$root.submit();">
                                     {{ __('Log Out') }}
                                 </x-dropdown-link>
                             </form>
@@ -101,7 +101,7 @@
                 @else
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
-                            <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition bg-gray-200">
+                            <button aria-label="Opciones de inicio" class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition bg-gray-200">
                                 <svg class="h-7 w-7 p-0.5 rounded-full fill-[#60A3BD]" xmlns="http://www.w3.org/2000/svg" fill="#273C99" height="1em"
                                     viewBox="0 0 448 512">
                                     <path
@@ -113,10 +113,10 @@
                             <div class="block px-4 py-2 text-xs text-gray-400">
                                 {{ __('Opciones de inicio') }}
                             </div>
-                            <x-dropdown-link href="{{ route('login') }}">
+                            <x-dropdown-link aria-label="Login" href="{{ route('login') }}">
                                 {{ __('Login') }}
                             </x-dropdown-link>
-                            <x-dropdown-link href="{{ route('register') }}">
+                            <x-dropdown-link  aria-label="Registrarse" href="{{ route('register') }}">
                                 {{ __('Register') }}
                             </x-dropdown-link>
                         </x-slot>
@@ -141,7 +141,7 @@
                         <ul class="bg-white py-6 rounded-bl-md h-auto overflow-auto">
                             @forelse ($categories as $category)
                                 <li class="navigation-link text-gray-700 font-semibold hover:bg-[#3E3E66] hover:text-white ">
-                                    <a href="{{ route('categories.show', $category) }}"
+                                    <a aria-label="Abrir la categoria {{$category->name}}" href="{{ route('categories.show', $category) }}"
                                         class="px-3 py-1 text-sm flex items-center z-40">
                                         <span class="flex justify-center w-9">
                                             {!! $category->icon !!}
@@ -180,7 +180,7 @@
     {{-- menu laateral movil --}}
     <div class="block md:hidden" style="z-index: 100">
         <div x-cloak x-show="open" x-transition.opacity class="fixed inset-0 bg-slate-900/75"></div>
-        <div x-cloak x-show="open" x-init="() => { $watch('open', value => toggleScrollLock(value)) }"
+        <div x-cloak x-show="open" {{-- x-init="() => { $watch('open', value => toggleScrollLock(value)) }" --}}
                 x-transition:enter="transition ease-out duration-300"
                 x-transition:enter-start="-translate-x-full" 
                 x-transition:enter-end="translate-x-0"
@@ -219,7 +219,7 @@
                                     <ul class="py-2 bg-[#60A3BD]/10 mx-2 rounded-md">
                                         @forelse ($categories as $category)
                                             <li class="navigation-link text-gray-700 font-semibold hover:bg-sky-500 hover:text-white rounded-sm">
-                                                <a href="{{route('categories.show', $category)}}" class="px-3 py-1 text-base flex items-center">
+                                                <a aria-label="Abrir la categoria {{$category->name}}" href="{{route('categories.show', $category)}}" class="px-3 py-1 text-base flex items-center">
                                                     <span class="flex justify-center w-9">
                                                         {!! $category->icon !!}
                                                     </span>
@@ -244,13 +244,13 @@
                             </div>
                         </div>
                         <div class="space-y-2">
-                            <x-responsive-nav-link href="{{route('services.index') }}" :active="request()->routeIs('services.index')">
+                            <x-responsive-nav-link aria-label="Abrir servicios" href="{{route('services.index') }}" :active="request()->routeIs('services.index')">
                                 {{ __('Servicios') }}
                             </x-responsive-nav-link>
-                            <x-responsive-nav-link href="{{ route('about') }}" :active="request()->routeIs('about')">
+                            <x-responsive-nav-link aria-label="Abrir nosotros" href="{{ route('about') }}" :active="request()->routeIs('about')">
                                 {{ __('Nosotros') }}
                             </x-responsive-nav-link>
-                            <x-responsive-nav-link href="{{ route('form-contact') }}" :active="request()->routeIs('form-contact')">
+                            <x-responsive-nav-link aria-label="Abrir contactanos" href="{{ route('form-contact') }}" :active="request()->routeIs('form-contact')">
                                 {{ __('Contactanos') }}
                             </x-responsive-nav-link>
                         </div>
@@ -269,20 +269,20 @@
                                 </div>
                             </div>
                             <div class="mt-3 space-y-1">
-                                <x-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
+                                <x-responsive-nav-link aria-label="Abrir perfil" href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
                                     {{ __('Profile') }}
                                 </x-responsive-nav-link>
-                                <x-responsive-nav-link href="{{ route('orders.index') }}" :active="request()->routeIs('orders.index')">
+                                <x-responsive-nav-link aria-label="Abrir mis ordenes" href="{{ route('orders.index') }}" :active="request()->routeIs('orders.index')">
                                     {{ __('Mis ordenes') }}
                                 </x-responsive-nav-link>
                                 @role('admin')
-                                    <x-responsive-nav-link href="{{ route('admin.index') }}" :active="request()->routeIs('admin.index')">
-                                        {{ __('Profile') }}
+                                    <x-responsive-nav-link aria-label="Abrir opcion para administrador" href="{{ route('admin.index') }}" :active="request()->routeIs('admin.index')">
+                                        {{ __('Administrador') }}
                                     </x-responsive-nav-link>
                                 @endrole
                                 <form method="POST" action="{{ route('logout') }}" x-data>
                                     @csrf
-                                    <x-responsive-nav-link href="{{ route('logout') }}"
+                                    <x-responsive-nav-link aria-label="Cerrar sesion" href="{{ route('logout') }}"
                                                 @click.prevent="$root.submit();">
                                                 {{ __('Log Out') }}
                                     </x-responsive-nav-link>
@@ -290,10 +290,10 @@
                             </div>
                         @else
                             <hr>
-                            <x-responsive-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')">
+                            <x-responsive-nav-link aria-label="Login" href="{{ route('login') }}" :active="request()->routeIs('login')">
                                 {{ __('Login') }}
                             </x-responsive-nav-link>
-                            <x-responsive-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')">
+                            <x-responsive-nav-link aria-label="Registrarse" href="{{ route('register') }}" :active="request()->routeIs('register')">
                                 {{ __('Register') }}
                             </x-responsive-nav-link>
                         @endauth

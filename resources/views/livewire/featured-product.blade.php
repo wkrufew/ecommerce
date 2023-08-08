@@ -9,7 +9,7 @@
                     <li class="bg-white border border-gray-200 hover:shadow-md group hover:shadow-[#60A3BD]/50 rounded-lg my-2 overflow-hidden {{$loop->last ? '' : 'mr-4'}}">
                         <article>
                             <figure class="relative overflow-hidden rounded-b-lg">
-                                <img loading="lazy" class=" w-full h-36 object-cover" src="{{Storage::url($product->images->first()->url)}}" alt="{{$product->name}}">
+                                <img loading="lazy" class=" w-full h-36 object-cover" src="{{ Storage::url($product->featuredImage()) }}" alt="{{$product->name}}">
                                 @if ($product->discount > 0)
                                     <div class="absolute top-0 right-0 px-2 py-1 bg-red-500 text-white text-xs md:text-xs font-semibold rounded-bl-lg w-auto">
                                         @php
@@ -35,7 +35,7 @@
                                         <span class="text-[#3E3E66]">$ {{$product->price}}</span>
                                     @endif
                                 </p>
-                                <a href="{{route('products.show', $product)}}" class="group-hover:bg-[#60A3BD] group-hover:text-white transition-all border border-[#60A3BD] mb-2 text-xs md:text-sm text-[#60A3BD] text-center rounded-lg shadow px-3 py-2 block mt-2 items-center justify-center">
+                                <a aria-label="Enlace al producto {{$product->name}}" href="{{route('products.show', $product)}}" class="group-hover:bg-[#60A3BD] group-hover:text-white transition-all border border-[#60A3BD] mb-2 text-xs md:text-sm text-[#60A3BD] text-center rounded-lg shadow px-3 py-2 block mt-2 items-center justify-center">
                                     Comprar Producto
                                 </a>
                             </div>

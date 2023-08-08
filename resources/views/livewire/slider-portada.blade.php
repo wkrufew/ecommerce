@@ -49,8 +49,8 @@
             <div class="swiper-wrapper">
                 @foreach ($sliders as $slider)
                     <div class="swiper-slide">
-                        <a href="{{$slider->url}}">
-                            <img src="{{ Storage::url($slider->imagen) }}" loading="lazy" />
+                        <a href="{{$slider->url}}" aria-label="Abrir enalce del slider {{$slider->id}}">
+                            <img src="{{ Storage::url($slider->imagen) }}"  alt="{{$slider->url}}" loading="auto" />
                             <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
                         </a>
                     </div>
@@ -72,22 +72,33 @@
         <script>
             Livewire.on('swiper', function() {
                 var swiper = new Swiper(".mySwiper", {
-                slidesPerView: 1,
-                spaceBetween: 10,
-                spaceBetween: 30,
-                loop: true,
-                effect: "fade",
-                autoplay: {
-                    delay: 5000,
-                    disableOnInteraction: false,
-                },
-                pagination: {
-                    el: ".swiper-pagination",
-                    type: 'bullets',
-                    clickable: true,
-                },
+                    slidesPerView: 1,
+                    spaceBetween: 10,
+                    spaceBetween: 30,
+                    loop: true,
+                    effect: "fade",
+                    autoplay: {
+                        delay: 5000,
+                        disableOnInteraction: false,
+                    },
+                    pagination: {
+                        el: ".swiper-pagination",
+                        type: 'bullets',
+                        clickable: true,
+                    },
+                });
+                // Marcar los eventos táctiles y de la rueda del mouse como pasivos
+                var swiperContainer = document.querySelector(".mySwiper");
+                swiperContainer.addEventListener('touchstart', function(event) {
+                    // Marcar el evento táctil como pasivo
+                    event.preventDefault();
+                }, { passive: true });
+
+                swiperContainer.addEventListener('wheel', function(event) {
+                    // Marcar el evento de la rueda del mouse como pasivo
+                    event.preventDefault();
+                }, { passive: true });
             });
-        });
         </script>
     @endpush
     
