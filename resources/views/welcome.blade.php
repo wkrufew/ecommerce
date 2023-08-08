@@ -152,6 +152,20 @@
                         }
                     ]
                 });
+                // Marcar los eventos táctiles y de la rueda del mouse como pasivos
+                var glider1Container = document.querySelector('.glider-1');
+                
+                // Evento táctil
+                glider1Container.addEventListener('touchstart', function(event) {
+                    // Marcar el evento táctil como pasivo
+                    event.preventDefault();
+                }, { passive: true });
+
+                // Evento de la rueda del mouse
+                glider1Container.addEventListener('wheel', function(event) {
+                    // Marcar el evento de la rueda del mouse como pasivo
+                    event.preventDefault();
+                }, { passive: true });
             });
 
             Livewire.on('glider-2', function(){
@@ -197,6 +211,20 @@
                         }
                     ]
                 });
+                // Marcar los eventos táctiles y de la rueda del mouse como pasivos
+                var glider2Container = document.querySelector('.glider-2');
+                
+                // Evento táctil
+                glider2Container.addEventListener('touchstart', function(event) {
+                    // Marcar el evento táctil como pasivo
+                    event.preventDefault();
+                }, { passive: true });
+
+                // Evento de la rueda del mouse
+                glider2Container.addEventListener('wheel', function(event) {
+                    // Marcar el evento de la rueda del mouse como pasivo
+                    event.preventDefault();
+                }, { passive: true });
             });
         </script>
     @endpush

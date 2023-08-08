@@ -299,7 +299,7 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 640 512"><path d="M112 0C85.5 0 64 21.5 64 48V96H16c-8.8 0-16 7.2-16 16s7.2 16 16 16H64 272c8.8 0 16 7.2 16 16s-7.2 16-16 16H64 48c-8.8 0-16 7.2-16 16s7.2 16 16 16H64 240c8.8 0 16 7.2 16 16s-7.2 16-16 16H64 16c-8.8 0-16 7.2-16 16s7.2 16 16 16H64 208c8.8 0 16 7.2 16 16s-7.2 16-16 16H64V416c0 53 43 96 96 96s96-43 96-96H384c0 53 43 96 96 96s96-43 96-96h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V288 256 237.3c0-17-6.7-33.3-18.7-45.3L512 114.7c-12-12-28.3-18.7-45.3-18.7H416V48c0-26.5-21.5-48-48-48H112zM544 237.3V256H416V160h50.7L544 237.3zM160 368a48 48 0 1 1 0 96 48 48 0 1 1 0-96zm272 48a48 48 0 1 1 96 0 48 48 0 1 1 -96 0z"/></svg>
                             </span>
                             <div class="ml-1 text-xs">
-                                <p class="text-white"> Envios a todo el Ecuador</p>
+                                <p class="text-white font-medium"> ENVÍOS A TODO EL ECUADOR</p>
                                 {{-- <p class="text-white"><span>Compra hoy y recibe el</span> <span class=" font-semibold">{{ now()->addDay(4)->isoFormat('dddd D MMMM') }} {{ calcularFechaEntrega(4) }}</span></p> --}}
                             </div>
                         </div>
@@ -328,7 +328,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 640 512"><path d="M112 0C85.5 0 64 21.5 64 48V96H16c-8.8 0-16 7.2-16 16s7.2 16 16 16H64 272c8.8 0 16 7.2 16 16s-7.2 16-16 16H64 48c-8.8 0-16 7.2-16 16s7.2 16 16 16H64 240c8.8 0 16 7.2 16 16s-7.2 16-16 16H64 16c-8.8 0-16 7.2-16 16s7.2 16 16 16H64 208c8.8 0 16 7.2 16 16s-7.2 16-16 16H64V416c0 53 43 96 96 96s96-43 96-96H384c0 53 43 96 96 96s96-43 96-96h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V288 256 237.3c0-17-6.7-33.3-18.7-45.3L512 114.7c-12-12-28.3-18.7-45.3-18.7H416V48c0-26.5-21.5-48-48-48H112zM544 237.3V256H416V160h50.7L544 237.3zM160 368a48 48 0 1 1 0 96 48 48 0 1 1 0-96zm272 48a48 48 0 1 1 96 0 48 48 0 1 1 -96 0z"/></svg>
                         </span>
                         <div class="ml-4 font-semibold text-sm">
-                            <p class="text-[#60A3BD]">Se realizan envios a todo el Ecuador</p>
+                            <p class="text-[#60A3BD] font-medium">SE REALIZA ENVÍOS A TODO EL ECUADOR</p>
                             {{-- <p>Si compras hoy lo recibes el <span class="text-[#60A3BD]"> {{ calcularFechaEntrega(4) }} {{ now()->addDay(4)->locale('es')->format('l j F') }} </span></p> --}}
                         </div>
                     </div>

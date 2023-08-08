@@ -50,7 +50,7 @@
                 @foreach ($sliders as $slider)
                     <div class="swiper-slide">
                         <a href="{{$slider->url}}" aria-label="Abrir enalce del slider {{$slider->id}}">
-                            <img src="{{ Storage::url($slider->imagen) }}"  alt="{{$slider->url}}" loading="auto" />
+                            <img class="w-full md:w-[1216px] h-auto md:h-[425px] object-cover" src="{{ Storage::url($slider->imagen) }}"  alt="{{$slider->url}}" loading="auto" />
                             <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
                         </a>
                     </div>

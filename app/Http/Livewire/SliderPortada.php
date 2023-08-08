@@ -12,7 +12,7 @@ class SliderPortada extends Component
     public function loadSlider()
     {
         $this->sliders = cache()->remember('sliders', 60*60*24, function () {
-            return Slider::orderBy('orden','asc')->get();
+            return Slider::select('id','orden','url','imagen')->orderBy('orden','asc')->get();
         });
 
         $this->emit('swiper');
