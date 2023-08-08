@@ -1,16 +1,11 @@
 <x-app-layout>  
-    {{-- @section('meta_tag')
-    <title>ESPOCHEP|ABOUT</title>
-        <meta name="robots" content="index, follow">
-        <meta name="title" content="ESPOCHEP|ABOUT">
-        <meta name="description" content="ESPOCHEP, es una empresa dedicada a las compras publicas">
-        <meta property="og:title" content="ESPOCH EP|ABOUT">
-        <meta property="og:type" content="article">
-        <meta property="og:description" content="ESPOCHEP, es una empresa dedicada a las compras publicas">
-        <meta property="og:url" content="{{ config('app.url') }}">
-        <meta property="og:img" content="{{ asset('../fotos/portada.webp') }}">
-        <meta property="og:site_name" content="ESPOCHEP"/>
-    @endsection --}}
+    {{-- INICIO SEO --}}
+        @section('title', '- ACERCA DE NOSOTROS')
+        @section('description', 'Explora nuestra tienda de sistemas eléctricos y electrónicos. Ofrecemos productos, servicios y soluciones innovadoras para tus necesidades eléctricas y electrónicas!')
+        @section('url', route('about'))
+        @section('img', asset('https://images.pexels.com/photos/7070/space-desk-workspace-coworking.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'))
+        @section('type', 'article')
+    {{-- FIN SEO --}}
     <section class="relative overflow-hidden bg-white pt-6">
         <div class="h-auto md:h-auto  max-w-5xl mx-4 bg-center object-cover top-0 left-0 z-0 md:mx-6 lg:mx-auto">
             <img src="https://images.pexels.com/photos/7070/space-desk-workspace-coworking.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="portada"

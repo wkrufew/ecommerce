@@ -3,6 +3,24 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
         <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.min.css" rel="stylesheet">
     @endpush
+
+    {{-- INICIO SEO --}}
+        @section('title', '- ' . $product->name)
+        @section('description', $product->description)
+        @section('url', route('products.show', $product))
+        @section('img', Storage::url($product->featuredImage()))
+    
+        @section('og-tags')
+            @if ($product->discount)
+            <meta property="og:price:amount" content="{{$product->discount}}">
+            @else
+            <meta property="og:price:amount" content="{{$product->price}}">
+            @endif
+            <meta property="og:price:currency" content="USD">
+            <meta property="og:availability" content="in_stock">
+        @endsection
+    {{-- FIN SEO --}}
+
     <div class="contenedor pt-4 pb-8">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class=" order-1">
@@ -86,7 +104,6 @@
                             </ul>
                         </div>
                     @endif
-                    
                     {{-- CUENTA DE ESTRELLAS --}}
                     <div class="bg-white rounded-md p-3 mt-4 pl-4 hidden md:block">
                         @php
@@ -116,7 +133,6 @@
                         @endfor
 
                     </div>
-
                     {{-- CAJA PARA CREAR LA RESEÑA --}}
                     <div id="review" class="hidden md:block">
                         @can('review', $product)
@@ -159,7 +175,6 @@
                             @endcan
                         @endcan
                     </div>
-
                     {{-- LISTADO DE RESEÑAS --}}
                     <div class="hidden md:block">
                         @if ($product->reviews->isNotEmpty())
@@ -362,8 +377,7 @@
                             </a>
                         </div>
                     @endauth
-                @endif
-                
+                @endif       
             </div>
             <div class="block md:hidden order-last">
                 <div class=" bg-white rounded-md p-4">
@@ -390,7 +404,6 @@
                     $ratings = $product->reviews->groupBy('rating');
                     $totalRatings = $product->reviews->count();
                 @endphp
-
                 @for ($i = 5; $i >= 1; $i--)
                     @php
                         $starsCount = isset($ratings[$i]) ? $ratings[$i]->count() : 0;
@@ -411,7 +424,6 @@
                         <span class="font-medium text-xs md:text-sm">{{ $starsCount }} calificaciones ({{ number_format($percentage, 1) }}%)</span>
                     </div>
                 @endfor
-
             </div>
             {{-- caja de de escribir un comentario --}}
             <div id="review" class="block md:hidden order-last">

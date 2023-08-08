@@ -137,6 +137,7 @@
             <div class="contenedor h-full">
 
                 @if ($loaded)
+                    <link rel="stylesheet" href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css') }}"integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="crossorigin="anonymous" referrerpolicy="no-referrer"/>
                     <div class="grid grid-cols-4 relative h-auto" @click.away="open = false" @close.stop="open = false">
                         <ul class="bg-white py-6 rounded-bl-md h-auto overflow-auto">
                             @forelse ($categories as $category)
@@ -162,6 +163,7 @@
                             <x-navigation-subcategories :category="$categories->first()" />
                         </div>
                     </div>
+                    <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/js/all.min.js') }}" integrity="sha512-rpLlll167T5LJHwp0waJCh3ZRf7pO6IT1+LZOhAyP6phAirwchClbTZV3iqL3BMrVxIYRbzGTpli4rfxsCK6Vw==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
                 @else
                     <div class="relative h-auto">
                         <ul class="bg-white py-4 rounded-b-md h-auto px-6 grid grid-cols-4">
@@ -220,9 +222,9 @@
                                         @forelse ($categories as $category)
                                             <li class="navigation-link text-gray-700 font-semibold hover:bg-sky-500 hover:text-white rounded-sm">
                                                 <a aria-label="Abrir la categoria {{$category->name}}" href="{{route('categories.show', $category)}}" class="px-3 py-1 text-base flex items-center">
-                                                    <span class="flex justify-center w-9">
+                                                    {{-- <span class="flex justify-center w-9">
                                                         {!! $category->icon !!}
-                                                    </span>
+                                                    </span> --}}
                                                     <span class="" >
                                                         {{ $category->name }}
                                                     </span>
@@ -302,4 +304,6 @@
             </div>
         </div>
     </div>
+
+    
 </nav>

@@ -3,28 +3,37 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#60A3BD"/>
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        
-        <title>{{ config('app.name', 'Laravel') }}</title>
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=heebo:400,500,600&display=swap" rel="stylesheet" />
-        <link rel="stylesheet" href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css') }}"integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="crossorigin="anonymous" referrerpolicy="no-referrer"/>
-        <link rel="stylesheet" href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/glider-js/1.7.8/glider.min.css') }}" integrity="sha512-YM6sLXVMZqkCspZoZeIPGXrhD9wxlxEF7MzniuvegURqrTGV2xTfqq1v9FJnczH+5OGFl5V78RgHZGaK34ylVg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link href="https://fonts.bunny.net/css?family=heebo:400&display=swap" rel="stylesheet" />
         @stack('css')
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-        <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/js/all.min.js') }}" integrity="sha512-rpLlll167T5LJHwp0waJCh3ZRf7pO6IT1+LZOhAyP6phAirwchClbTZV3iqL3BMrVxIYRbzGTpli4rfxsCK6Vw==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
-        <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/glider-js/1.7.8/glider.min.js') }}" integrity="sha512-AZURF+lGBgrV0WM7dsCFwaQEltUV5964wxMv+TSzbb6G1/Poa9sFxaCed8l8CcFRTiP7FsCgCyOm/kf1LARyxA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <!-- Styles -->
         @livewireStyles
+        <!-- SEO -->
+            <title>{{ config('app.name', 'CONSISTELEC') }} @yield('title')</title>
+            <meta name="robots" content="index, follow">
+            <meta name="author" content="Jose Coba">
+            <meta name="description" content="@yield('description', '')">
+            <meta property="og:title" content="{{ config('app.name', 'CONSISTELEC') }} @yield('title', 'Inicio')">
+            <meta property="og:type" content="@yield('type', 'product')">
+            <meta property="og:description" content="@yield('description', '')">
+            <meta property="og:url" content="@yield('url', config('app.url'))">
+            <meta property="og:image" content="@yield('img', asset('img/home/sports.jpg'))">{{-- falta definir la imagen de la empresa --}}
+            <meta property="og:site_name" content="{{ config('app.name', 'CONSISTELEC') }}" />
+            <!-- PARA PRODUCTOS -->
+            @yield('og-tags')
+            <meta name="keywords" content="Sistemas eléctricos-electrónicos, Diseño de sistemas eléctricos, Implementación de sistemas electrónicos, Venta de sistemas eléctricos, Soluciones eléctricas y electrónicas, Ingeniería eléctrica y electrónica, Automatización industrial, Control de procesos eléctricos, Componentes eléctricos y electrónicos, Servicios eléctricos especializados, Soluciones personalizadas eléctricas, Equipos electrónicos industriales, Consultoría en sistemas eléctricos, Integración de sistemas electrónicos, Diseño de circuitos eléctricos, Electrónica de potencia, Eficiencia energética eléctrica, Automatización y control eléctrico, Proyectos eléctricos y electrónicos, Innovación en sistemas eléctricos">
+            <link rel="canonical" href="@yield('url', config('app.url'))">
+        <!-- SEO -->
     </head>
     <body class="font-heebo antialiased overflow-x-hidden selection:bg-[#60A3BD] selection:text-white">
         <x-banner/>
         <div class="min-h-screen bg-gray-100">
-            <!-- menu -->
             @livewire('navigation')
-            <!-- Page Content -->
             <main>
                 {{ $slot }}
             </main>

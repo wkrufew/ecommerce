@@ -1,5 +1,7 @@
 <div wire:init="loadSlider">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    @push('css')
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />        
+    @endpush
     <style>
         .swiper {
             width: 1216px;

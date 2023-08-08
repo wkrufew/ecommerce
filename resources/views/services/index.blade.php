@@ -1,4 +1,11 @@
 <x-app-layout>
+    {{-- INICIO SEO --}}
+        @section('title', '- SERVICIOS DE SISTEMAS ELÉCTRICOS Y ELECTRÓNICOS')
+        @section('description', 'Nuestros servicios eléctricos y electrónicos a tu disposición')
+        @section('url', route('services.index'))
+        @section('img',  asset('fotos/servicios.webp'))
+        @section('type', 'article')
+    {{-- FIN SEO --}}
     <div class="contenedor">
         <style>
             .fondo-service{

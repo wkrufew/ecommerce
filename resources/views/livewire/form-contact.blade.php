@@ -2,6 +2,13 @@
     @push('css')
         <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.min.css" rel="stylesheet">
     @endpush
+    {{-- INICIO SEO --}}
+        @section('title', '- CONTACTANOS')
+        @section('description', 'Explora nuestra tienda de sistemas eléctricos y electrónicos. Ofrecemos productos, servicios y soluciones innovadoras para tus necesidades eléctricas y electrónicas!')
+        @section('url', route('form-contact'))
+        @section('img', asset('https://images.pexels.com/photos/577517/pexels-photo-577517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'))
+        @section('type', 'article')
+    {{-- FIN SEO --}}
     <div class="min-h-screen bg-black/60">
         <div class="contenedor px-0 md:px-6 pt-4 pb-10 mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-2 mx-4">

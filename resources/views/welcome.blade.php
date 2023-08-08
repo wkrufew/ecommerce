@@ -1,12 +1,16 @@
 <x-app-layout>
+    {{-- INICIO SEO --}}
+        @section('title', '- TIENDA DE SISTEMAS ELÉCTRICOS Y ELECTRÓNICOS')
+        @section('description', 'Explora nuestra tienda de sistemas eléctricos y electrónicos. Ofrecemos productos, servicios y soluciones innovadoras para tus necesidades eléctricas y electrónicas!')
+        @section('url', route('home'))
+        @section('img', asset('img/home/logo2.webp')){{-- definir la imagen principal --}}
+    {{-- FIN SEO --}}
     {{-- PORTADA SLIDER --}}
     <section class="max-w-7xl mx-auto px-2 md:px-8 pt-4 pb-0 md:pb-10 relative">
         <div class="rounded-md overflow-hidden">
             @livewire('slider-portada')
         </div>
-        
     </section>
-
     @if ($settings['banner'])
         <div class="grid h-auto place-items-center mb-10 select-none">
             <div class="w-full max-w-5xl rounded-lg bg-gradient-to-br from-[#60A3BD] to-red-500 text-white">
@@ -53,6 +57,10 @@
             </div>
         </div>
     </section>
+    @push('css')
+        <link rel="stylesheet" href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/glider-js/1.7.8/glider.min.css') }}" integrity="sha512-YM6sLXVMZqkCspZoZeIPGXrhD9wxlxEF7MzniuvegURqrTGV2xTfqq1v9FJnczH+5OGFl5V78RgHZGaK34ylVg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+       
+    @endpush
     {{-- SLIDER DE PRODUCTOS DESTACADOS --}}
     <div class="relative my-9 lg:my-14">
         <section class="contenedor">
@@ -108,6 +116,8 @@
     </section>
 
     @push('script')
+    <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/glider-js/1.7.8/glider.min.js') }}" integrity="sha512-AZURF+lGBgrV0WM7dsCFwaQEltUV5964wxMv+TSzbb6G1/Poa9sFxaCed8l8CcFRTiP7FsCgCyOm/kf1LARyxA=="   crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        
         <script>
             Livewire.on('glider-1', function(){
                 new Glider(document.querySelector('.glider-1'), {
