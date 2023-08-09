@@ -1,4 +1,4 @@
-<div class="w-full md:w-72 h-full rounded-full relative">
+<div class="w-full md:w-72 h-full rounded-full relative mx-2 md:mx-0">
     <div class="">
         <form action="{{ route('search') }}" autocomplete="off">
             <input name="name" wire:model.debounce.500ms="search" type="text" placeholder="Busque un producto por su nombre ..." class="placeholder:text-gray-400 w-full text-sm md:text-xs bg-white border border-[#60A3BD] rounded-full focus:outline-none  focus:border-[#60A3BD]">

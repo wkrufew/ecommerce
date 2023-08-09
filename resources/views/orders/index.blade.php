@@ -1,5 +1,7 @@
 <x-app-layout>
-
+    @push('css')
+        <link rel="stylesheet" href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css') }}"integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    @endpush
     <div class="max-w-5xl mx-auto px-4 pt-6 mb-10">
         <section class="grid grid-cols-3 md:grid-cols-5 gap-4 md:gap-6 text-white">
             <a href="{{ route('orders.index') . "?status=1" }}" class="bg-gray-500 bg-opacity-75 rounded-lg px-2 md:px-12 pt-4 md:pt-6 pb-2 md:pb-4">
@@ -142,5 +144,7 @@
         @endif
 
     </div>
-
+    @push('script')
+        <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/js/all.min.js') }}" integrity="sha512-rpLlll167T5LJHwp0waJCh3ZRf7pO6IT1+LZOhAyP6phAirwchClbTZV3iqL3BMrVxIYRbzGTpli4rfxsCK6Vw==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+    @endpush
 </x-app-layout>

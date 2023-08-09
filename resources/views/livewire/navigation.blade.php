@@ -2,7 +2,7 @@
     <div class="contenedor flex justify-between items-center h-14 space-x-6">
         <!-- Logo -->
         <div class="flex items-center space-x-4 h-full">
-            <a aria-label="Abrir el menu de categorias" wire:click="$emit('switchingCategoryEvent')" :class="{'md:bg-opacity-100 text-[#3E3E66]': open, 'md:bg-opacity-10 text-[#60A3BD]': !open }" class="flex flex-col overflow-hidden select-none cursor-pointer px-2 items-center justify-center my-auto md:bg-white  md:bg-opacity-25 text-[#60A3BD] h-full"
+            <button aria-label="Abrir el menu de categorias" wire:click="$emit('switchingCategoryEvent')" :class="{'md:bg-opacity-100 text-[#3E3E66]': open, 'md:bg-opacity-10 text-[#60A3BD]': !open }" class="flex flex-col overflow-hidden select-none cursor-pointer px-2 items-center justify-center my-auto md:bg-white  md:bg-opacity-25 text-[#60A3BD] h-full"
                 @click="open = !open">
                 <div class="space-y-1">
                     <span :class="{ 'translate-y-2 rotate-45 bg-[#3E3E66]': open, 'bg-[#60A3BD]': !open }"
@@ -13,7 +13,7 @@
                         class="block bg-[#60A3BD] h-0.5 w-6 origin-center rounded-full transition-transform duration-500 ease-in-out"></span>
                 </div>
                 <span class="text-sm pt-1 hidden md:block font-medium">Categorias</span>
-            </a>
+            </button>
             <div class="hidden md:block">
                 <div class="shrink-0 flex items-center">
                     <a aria-label="Ir al inicio de la pagina" href="/">
@@ -210,12 +210,19 @@
                             {{ __('Inicio') }}
                         </x-responsive-nav-link>
                         <div class="py-2" x-data="{ openCat: false }">
-                            <x-responsive-nav-link @click="openCat = !openCat" class="flex">
+                            {{-- aqui poner un boton no a para poder darle un nombre y que salga mejor el seo --}}
+                            <button aria-label="Dropdown para ver categorias" @click="openCat = !openCat" class="flex w-full pl-3 pr-4 py-1 border-l-2  text-left text-base font-medium text-gray-600 focus:outline-none focus:text-white focus:bg-[#60A3BD] focus:border-[#60A3BD] transition duration-150 ease-in-out">
                                 {{ __('Categorias') }}
                                 <span>
                                     <svg :class="{ 'rotate-180': openCat}" class="transform transition-all z-20" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m12 13.171l4.95-4.95l1.414 1.415L12 16L5.636 9.636L7.05 8.222l4.95 4.95Z"/></svg>
                                 </span>
-                            </x-responsive-nav-link>
+                            </button>
+                            {{-- <x-responsive-nav-link @click="openCat = !openCat" class="flex">
+                                {{ __('Categorias') }}
+                                <span>
+                                    <svg :class="{ 'rotate-180': openCat}" class="transform transition-all z-20" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m12 13.171l4.95-4.95l1.414 1.415L12 16L5.636 9.636L7.05 8.222l4.95 4.95Z"/></svg>
+                                </span>
+                            </x-responsive-nav-link> --}}
                             <div x-cloak x-show="openCat" x-collapse>
                                 @if ($loaded)
                                     <ul class="py-2 bg-[#60A3BD]/10 mx-2 rounded-md">

@@ -14,6 +14,7 @@
         <!-- Styles -->
         @livewireStyles
         <!-- SEO -->
+            <link rel="canonical" href="@yield('url', config('app.url'))">
             <title>{{ config('app.name', 'CONSISTELEC') }} @yield('title')</title>
             <meta name="robots" content="index, follow">
             <meta name="author" content="Jose Coba">
@@ -27,7 +28,6 @@
             <!-- PARA PRODUCTOS -->
             @yield('og-tags')
             <meta name="keywords" content="Sistemas eléctricos-electrónicos, Diseño de sistemas eléctricos, Implementación de sistemas electrónicos, Venta de sistemas eléctricos, Soluciones eléctricas y electrónicas, Ingeniería eléctrica y electrónica, Automatización industrial, Control de procesos eléctricos, Componentes eléctricos y electrónicos, Servicios eléctricos especializados, Soluciones personalizadas eléctricas, Equipos electrónicos industriales, Consultoría en sistemas eléctricos, Integración de sistemas electrónicos, Diseño de circuitos eléctricos, Electrónica de potencia, Eficiencia energética eléctrica, Automatización y control eléctrico, Proyectos eléctricos y electrónicos, Innovación en sistemas eléctricos">
-            <link rel="canonical" href="@yield('url', config('app.url'))">
         <!-- SEO -->
     </head>
     <body class="font-heebo antialiased overflow-x-hidden selection:bg-[#60A3BD] selection:text-white">
