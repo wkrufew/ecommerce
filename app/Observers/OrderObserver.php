@@ -21,7 +21,7 @@ class OrderObserver
     {
         $user = auth()->user();
         Mail::to($user->email)
-        ->cc('smith93svam@gmail.com')
+        ->cc(config('services.opciones.correo'))
         ->queue(new OrderCreate($order, $user));
     }
 
@@ -38,19 +38,19 @@ class OrderObserver
             $user->notify((new OrderCancel())->delay($delay));
         } elseif ($order->status == 4) {
             Mail::to($user->email)
-            ->cc('smith93svam@gmail.com')
-            /* ->queue(new OrderDelivered($order, $user)); */
-            ->later(now()->addMinutes(2), new OrderDelivered($order, $user));
+            ->cc(config('services.opciones.correo'))
+            ->queue(new OrderDelivered($order, $user));
+            /* ->later(now()->addMinutes(2), new OrderDelivered($order, $user)); */
         } elseif ($order->status == 3) {
             Mail::to($user->email)
-            ->cc('smith93svam@gmail.com')
-            /* ->queue(new OrderSent($order, $user)); */
-            ->later(now()->addMinutes(2), new OrderSent($order, $user));
+            ->cc(config('services.opciones.correo'))
+            ->queue(new OrderSent($order, $user));
+            /* ->later(now()->addMinutes(2), new OrderSent($order, $user)); */
         } elseif ($order->status == 2) {
             Mail::to($user->email)
-            ->cc('smith93svam@gmail.com')
-            /* ->queue(new OrderAccept($order, $user)); */
-            ->later(now()->addMinutes(2), new OrderAccept($order, $user));
+            ->cc(config('services.opciones.correo'))
+            ->queue(new OrderAccept($order, $user));
+            /* ->later(now()->addMinutes(2), new OrderAccept($order, $user)); */
         }
     }
 

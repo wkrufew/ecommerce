@@ -25,7 +25,7 @@ class FormContact extends Component
     {
         $data = $this->validate();
 
-        Mail::to('destinatario@example.com')->queue(new MailFormContact($data));
+        Mail::to(config('services.opciones.correo'))->queue(new MailFormContact($data));
         
         $this->resetForm();
         
