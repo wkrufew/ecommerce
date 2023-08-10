@@ -35,7 +35,7 @@ Saludos, {{ $user->name }}</strong>, su orden ha sido creada con éxito.
 
 # INDICACIONES DE PAGO
 
-Para validar la orden debe realizar el deposito o transferencia a la siguiente cuenta.
+Para validar la orden debe realizar el deposito o transferencia a la siguiente cuenta y enviar el comprobante al Whatsapp.
 <x-mail::panel>
     <b>Nombre del beneficiario: </b>{{ $settings['ceo'] }} <br>
     <b>Banco: </b>{{ $settings['banco'] }}<br>
@@ -43,7 +43,7 @@ Para validar la orden debe realizar el deposito o transferencia a la siguiente c
     <b>Tipo de cuenta: </b>{{ $settings['tipocuenta'] }} <br>
     <b>Cédula: </b>{{ $settings['cedula'] }} <br>
     <b>Correo: </b>{{ $settings['email1'] }}<br>
-    <b>Whatsapp: </b>{{ $settings['phone1'] }}<br> 
+    <b>Whatsapp: </b>{{ $settings['phone2'] }}<br> 
     <br>
     <b>Nota: </b> Si el deposito o transferencia no se realiza dentro de las 48 horas a partir de la compra se anulará la orden atomaticamente. 
 

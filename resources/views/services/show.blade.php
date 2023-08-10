@@ -90,9 +90,9 @@
                         </div>
                     </div>
                     <div>
-                        <h1 class="mt-4 font-semibold text-lg uppercase text-center text-[#3E3E66]">{{ $service->title }}</h1>
+                        <h1 class="mt-4 font-semibold text-center text-[#3E3E66]">{{ $service->title }}</h1>
                         <h2 class="mt-3 text-base font-semibold text-[#3E3E66]">{{ $service->subtitle }}</h2>
-                        <p class="my-3 text-sm text-[#3E3E66]">{!! $service->description !!}</p>
+                        <p class="my-3 text-sm">{!! $service->description !!}</p>
                     </div>
                     <div>
                         @php

@@ -5,7 +5,11 @@
         @section('url', route('home'))
         @section('img', asset('img/home/logo2.webp')){{-- definir la imagen principal --}}
     {{-- FIN SEO --}}
+    
     {{-- PORTADA SLIDER --}}
+    @push('css')
+        <link rel="stylesheet" href="{{ asset('https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css') }}"/>        
+    @endpush
     <section class="max-w-7xl mx-auto px-2 md:px-8 pt-4 pb-0 md:pb-10 relative">
         <div class="rounded-md overflow-hidden">
             @livewire('slider-portada')
@@ -57,10 +61,6 @@
             </div>
         </div>
     </section>
-    @push('css')
-        <link rel="stylesheet" href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/glider-js/1.7.8/glider.min.css') }}" integrity="sha512-YM6sLXVMZqkCspZoZeIPGXrhD9wxlxEF7MzniuvegURqrTGV2xTfqq1v9FJnczH+5OGFl5V78RgHZGaK34ylVg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-       
-    @endpush
     {{-- SLIDER DE PRODUCTOS DESTACADOS --}}
     <div class="relative my-9 lg:my-14">
         <section class="contenedor">
@@ -116,125 +116,96 @@
     </section>
 
     @push('script')
-    <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/glider-js/1.7.8/glider.min.js') }}" integrity="sha512-AZURF+lGBgrV0WM7dsCFwaQEltUV5964wxMv+TSzbb6G1/Poa9sFxaCed8l8CcFRTiP7FsCgCyOm/kf1LARyxA=="   crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        
+        <script src="{{ asset('https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js') }}"></script>
         <script>
-            Livewire.on('glider-1', function(){
-                new Glider(document.querySelector('.glider-1'), {
-                    slidesToShow: 1.5,
-                    slidesToScroll: 1,
-                    draggable: true,
-                    dots:  '.glider-1~ .dots',
-                    arrows: {
-                        prev: '.glider-prev',
-                        next: '.glider-next'
+            Livewire.on('swiper', function() {
+                var swiper1 = new Swiper(".mySwiper1", {
+                    slidesPerView: 1,
+                    spaceBetween: 10,
+                    loop: true,
+                    effect: "fade",
+                    autoplay: {
+                        delay: 5000,
+                        disableOnInteraction: false,
                     },
-                    responsive: [
-                        {
-                        // screens greater than >= 640px
-                        breakpoint: 640,
-                        settings: {
-                            // Set to `auto` and provide item width to adjust to viewport
-                            slidesToShow: 2,
-                            slidesToScroll: 'auto',
-                            itemWidth: 150,
-                            duration: 0.25
-                        }
-                        },{
-                        // screens greater than >= 775px
-                        breakpoint: 775,
-                        settings: {
-                            // Set to `auto` and provide item width to adjust to viewport
-                            slidesToShow: 2.5,
-                            slidesToScroll: 'auto',
-                            itemWidth: 150,
-                            duration: 0.25
-                        }
-                        },{
-                        // screens greater than >= 1024px
-                        breakpoint: 1024,
-                        settings: {
-                            slidesToShow: 5,
-                            slidesToScroll: 1,
-                            itemWidth: 150,
-                            duration: 0.25
-                        }
-                        }
-                    ]
+                    pagination: {
+                        el: ".swiper-pagination",
+                        type: 'bullets',
+                        clickable: true,
+                    },
                 });
-                // Marcar los eventos táctiles y de la rueda del mouse como pasivos
-                var glider1Container = document.querySelector('.glider-1');
-                
-                // Evento táctil
-                glider1Container.addEventListener('touchstart', function(event) {
-                    // Marcar el evento táctil como pasivo
-                    event.preventDefault();
-                }, { passive: true });
-
-                // Evento de la rueda del mouse
-                glider1Container.addEventListener('wheel', function(event) {
-                    // Marcar el evento de la rueda del mouse como pasivo
-                    event.preventDefault();
-                }, { passive: true });
             });
 
-            Livewire.on('glider-2', function(){
-                new Glider(document.querySelector('.glider-2'), {
-                    slidesToShow: 1.5,
-                    slidesToScroll: 1,
-                    draggable: true,
-                    dots: '.glider-2~ .dots',
-                    arrows: {
-                        prev: '.glider-2~ .glider-prev',
-                        next: '.glider-2~ .glider-next'
+            Livewire.on('swiper2', function() {
+                var swiper2 = new Swiper(".mySwiper2", {
+                    slidesPerView: 1,
+                    spaceBetween: 10,
+                    grabCursor: true,
+                    loop: true,
+                    pagination: {
+                        el: ".swiper-pagination",
+                        type: 'bullets',
+                        clickable: true,
                     },
-                    responsive: [
-                        {
-                        // screens greater than >= 640px
-                        breakpoint: 640,
-                        settings: {
-                            // Set to `auto` and provide item width to adjust to viewport
-                            slidesToShow: 2,
-                            slidesToScroll: 'auto',
-                            itemWidth: 150,
-                            duration: 0.25
-                        }
-                        },{
-                        // screens greater than >= 775px
-                        breakpoint: 775,
-                        settings: {
-                            // Set to `auto` and provide item width to adjust to viewport
-                            slidesToShow: 2.5,
-                            slidesToScroll: 'auto',
-                            itemWidth: 150,
-                            duration: 0.25
-                        }
-                        },{
-                        // screens greater than >= 1024px
-                        breakpoint: 1024,
-                        settings: {
-                            slidesToShow: 5,
-                            slidesToScroll: 1,
-                            itemWidth: 150,
-                            duration: 0.25
-                        }
-                        }
-                    ]
+                    autoplay: {
+                        delay: 5000,
+                        disableOnInteraction: false,
+                    },
+                    breakpoints: {
+                        500: {
+                        slidesPerView: 2,
+                        spaceBetween: 10,
+                        },
+                        660: {
+                        slidesPerView: 3,
+                        spaceBetween: 10,
+                        },
+                        920: {
+                        slidesPerView: 4,
+                        spaceBetween: 10,
+                        },
+                        1250: {
+                        slidesPerView: 5,
+                        spaceBetween: 10,
+                        },
+                    },
                 });
-                // Marcar los eventos táctiles y de la rueda del mouse como pasivos
-                var glider2Container = document.querySelector('.glider-2');
-                
-                // Evento táctil
-                glider2Container.addEventListener('touchstart', function(event) {
-                    // Marcar el evento táctil como pasivo
-                    event.preventDefault();
-                }, { passive: true });
+            });
 
-                // Evento de la rueda del mouse
-                glider2Container.addEventListener('wheel', function(event) {
-                    // Marcar el evento de la rueda del mouse como pasivo
-                    event.preventDefault();
-                }, { passive: true });
+            Livewire.on('swiper3', function() {
+                var swiper3 = new Swiper(".mySwiper3", {
+                    slidesPerView: 1,
+                    spaceBetween: 10,
+                    grabCursor: true,
+                    loop: true,
+                    pagination: {
+                        el: ".swiper-pagination",
+                        type: 'bullets',
+                        clickable: true,
+                    },
+                    autoplay: {
+                        delay: 5000,
+                        disableOnInteraction: false,
+                    },
+                    breakpoints: {
+                        500: {
+                        slidesPerView: 2,
+                        spaceBetween: 10,
+                        },
+                        660: {
+                        slidesPerView: 3,
+                        spaceBetween: 10,
+                        },
+                        920: {
+                        slidesPerView: 4,
+                        spaceBetween: 10,
+                        },
+                        1250: {
+                        slidesPerView: 5,
+                        spaceBetween: 10,
+                        },
+                    },
+                });
             });
         </script>
     @endpush

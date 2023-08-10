@@ -181,7 +181,7 @@
     </div>
     {{-- menu laateral movil --}}
     <div class="block md:hidden" style="z-index: 100">
-        <div x-cloak x-show="open" x-transition.opacity class="fixed inset-0 bg-slate-900/75"></div>
+        <div x-cloak x-show="open" x-transition.opacity class="fixed inset-0 bg-white bg-opacity-5 backdrop-blur-sm"></div>
         <div x-cloak x-show="open" {{-- x-init="() => { $watch('open', value => toggleScrollLock(value)) }" --}}
                 x-transition:enter="transition ease-out duration-300"
                 x-transition:enter-start="-translate-x-full" 
@@ -210,29 +210,19 @@
                             {{ __('Inicio') }}
                         </x-responsive-nav-link>
                         <div class="py-2" x-data="{ openCat: false }">
-                            {{-- aqui poner un boton no a para poder darle un nombre y que salga mejor el seo --}}
                             <button aria-label="Dropdown para ver categorias" @click="openCat = !openCat" class="flex w-full pl-3 pr-4 py-1 border-l-2  text-left text-base font-medium text-gray-600 focus:outline-none focus:text-white focus:bg-[#60A3BD] focus:border-[#60A3BD] transition duration-150 ease-in-out">
                                 {{ __('Categorias') }}
                                 <span>
                                     <svg :class="{ 'rotate-180': openCat}" class="transform transition-all z-20" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m12 13.171l4.95-4.95l1.414 1.415L12 16L5.636 9.636L7.05 8.222l4.95 4.95Z"/></svg>
                                 </span>
                             </button>
-                            {{-- <x-responsive-nav-link @click="openCat = !openCat" class="flex">
-                                {{ __('Categorias') }}
-                                <span>
-                                    <svg :class="{ 'rotate-180': openCat}" class="transform transition-all z-20" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m12 13.171l4.95-4.95l1.414 1.415L12 16L5.636 9.636L7.05 8.222l4.95 4.95Z"/></svg>
-                                </span>
-                            </x-responsive-nav-link> --}}
                             <div x-cloak x-show="openCat" x-collapse>
                                 @if ($loaded)
-                                    <ul class="py-2 bg-[#60A3BD]/10 mx-2 rounded-md">
+                                    <ul class="py-2 bg-[#60A3BD]/10 rounded-md">
                                         @forelse ($categories as $category)
                                             <li class="navigation-link text-gray-700 font-semibold hover:bg-sky-500 hover:text-white rounded-sm">
-                                                <a aria-label="Abrir la categoria {{$category->name}}" href="{{route('categories.show', $category)}}" class="px-3 py-1 text-base flex items-center">
-                                                    {{-- <span class="flex justify-center w-9">
-                                                        {!! $category->icon !!}
-                                                    </span> --}}
-                                                    <span class="" >
+                                                <a aria-label="Abrir la categoria {{$category->name}}" href="{{route('categories.show', $category)}}" class="pl-4 pr-2 py-1 text-base flex items-center">
+                                                    <span>
                                                         {{ $category->name }}
                                                     </span>
                                                 </a>
@@ -244,8 +234,8 @@
                                         @endforelse
                                     </ul>
                                 @else
-                                    <ul>
-                                        <li>
+                                    <ul class="py-2 bg-[#60A3BD]/10 rounded-md">
+                                        <li class="py-1 px-3">
                                             Cargando categorias...
                                         </li>
                                     </ul>
@@ -311,6 +301,4 @@
             </div>
         </div>
     </div>
-
-    
 </nav>

@@ -1,7 +1,4 @@
 <div wire:init="loadSlider">
-    @push('css')
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />        
-    @endpush
     <style>
         .swiper {
             width: 1216px;
@@ -41,13 +38,13 @@
             width: 100%;
         }
         .swiper-pagination-bullet-active{
-                width: 11px;
-                height: 11px;
-                background-color: #3E3E66;
+                width: 10px;
+                height: 10px;
+                background-color: #60A3BD;
             }
     </style>
     @if (count($sliders))
-        <div class="swiper mySwiper">
+        <div class="swiper mySwiper1">
             <div class="swiper-wrapper">
                 @foreach ($sliders as $slider)
                     <div class="swiper-slide">
@@ -63,45 +60,6 @@
             </div>
         </div>
     @else
-        <div class="swiper bg-gray-400 animate-pulse">
-
-        </div>
+        <div class="swiper bg-gray-400 animate-pulse"></div>
     @endif
-
-    @push('script')
-        <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-        <!-- Initialize Swiper -->
-        <script>
-            Livewire.on('swiper', function() {
-                var swiper = new Swiper(".mySwiper", {
-                    slidesPerView: 1,
-                    spaceBetween: 10,
-                    spaceBetween: 30,
-                    loop: true,
-                    effect: "fade",
-                    autoplay: {
-                        delay: 5000,
-                        disableOnInteraction: false,
-                    },
-                    pagination: {
-                        el: ".swiper-pagination",
-                        type: 'bullets',
-                        clickable: true,
-                    },
-                });
-                // Marcar los eventos táctiles y de la rueda del mouse como pasivos
-                var swiperContainer = document.querySelector(".mySwiper");
-                swiperContainer.addEventListener('touchstart', function(event) {
-                    // Marcar el evento táctil como pasivo
-                    event.preventDefault();
-                }, { passive: true });
-
-                swiperContainer.addEventListener('wheel', function(event) {
-                    // Marcar el evento de la rueda del mouse como pasivo
-                    event.preventDefault();
-                }, { passive: true });
-            });
-        </script>
-    @endpush
-    
 </div>

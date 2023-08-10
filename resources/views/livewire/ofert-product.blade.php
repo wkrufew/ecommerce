@@ -1,12 +1,18 @@
-<div wire:init="loadProduct">
+<div wire:init="loadProductO">
+    <style>
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
     <h2 class="text-lg font-semibold text-center pb-6 text-white">
         MEJORES OFERTAS
     </h2>
-    @if (count($products))
-        <div class="glider-contain">
-            <ul class="glider-2">
-                @forelse ($products as $product)
-                    <li class="group hover:shadow-[#60A3BD]/50 rounded-lg object-cover my-2 overflow-hidden {{$loop->last ? '' : 'mr-4'}}">
+    @if (count($productso))
+        <div class="swiper mySwiper3">
+            <div class="swiper-wrapper pb-2">
+                @forelse ($productso as $product)
+                    <div class="swiper-slide group hover:shadow-[#60A3BD]/50 rounded-lg object-cover my-2 overflow-hidden {{$loop->last ? '' : 'mr-4'}}">
                         <article class="overflow-hidden">
                             <figure class="relative rounded-b-lg overflow-hidden z-40">
                                 <img loading="lazy" class="w-full h-36 object-cover" src="{{Storage::url($product->featuredImage())}}" alt="{{$product->name}}">
@@ -19,7 +25,7 @@
                                         - {{ intval($discount) }} %
                                     </div>
                                 @endif
-                                <div class="absolute bottom-0 left-0 px-2 py-1 bg-red-500 text-white text-xs rounded-tr-lg {{-- rounded-ee-lg rounded-ss-lg --}} w-auto">Oferta</div>
+                                <div class="absolute bottom-0 left-0 px-2 py-1 bg-red-500 text-white text-xs rounded-tr-lg w-auto">Oferta</div>
                             </figure>
                             <div class="-translate-y-2 bg-white h-full z-30 rounded-b-lg flex flex-col ">
                                 <div class="h-full mt-3">
@@ -44,20 +50,15 @@
                                 </div>
                             </div>
                         </article>
-                    </li>
+                    </div>
                 @empty
-                    <li>Sin productos por el momento.</li>
+                    <div>Sin productos por el momento.</div>
                 @endforelse
-            </ul>
-            <button aria-label="Previous" class="hidden lg:block glider-prev rounded-full w-10 h-10 bg-[#71718f] text-white -translate-x-7">«</button>
-            <button aria-label="Next" class="hidden lg:block glider-next rounded-full w-10 h-10 bg-[#71718f] text-white translate-x-7">»</button>
-            {{-- <div class="hidden lg:block">
-            </div> --}}
-            <div role="tablist" class="dots"></div>
+            </div>
+            <div class="swiper-pagination translate-y-3.5"></div>
         </div>
     @else 
         <div class="altura-loading">
-            {{-- <x-loading message="Cargando Productos..."/> --}}
             <div class="hidden lg:block">
                 <div class="flex flex-nowrap">
                     @for ($i = 1; $i <= 5; $i++)

@@ -6,6 +6,7 @@
         <meta name="theme-color" content="#60A3BD"/>
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <!-- Fonts -->
+        <link rel="shortcut icon" href="{{ asset('fotos/favicon.webp') }}">
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=heebo:400&display=swap" rel="stylesheet" />
         @stack('css')
@@ -32,7 +33,7 @@
     </head>
     <body class="font-heebo antialiased overflow-x-hidden selection:bg-[#60A3BD] selection:text-white">
         <x-banner/>
-        <div class="min-h-screen bg-gray-100">
+        <div class="min-h-screen bg-gray-100 select-none">
             @livewire('navigation')
             <main>
                 {{ $slot }}

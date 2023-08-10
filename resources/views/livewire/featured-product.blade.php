@@ -1,12 +1,23 @@
-<div wire:init="loadProduct">
+<div wire:init="loadProductD">
+    <style>
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
+        /* .swiper-slide {
+            
+            width: 229px;
+        } */
+    </style>
     <h2 class="text-lg font-semibold text-center pb-5 text-[#3E3E66]">
         PRODUCTOS DESTACADOS
     </h2>
-    @if (count($products))
-        <div class="glider-contain">
-            <ul class="glider-1">
-                @forelse ($products as $product)
-                    <li class="bg-white border border-gray-200 hover:shadow-md group hover:shadow-[#60A3BD]/50 rounded-lg my-2 overflow-hidden {{$loop->last ? '' : 'mr-4'}}">
+    @if (count($productsd))
+        <!-- Swiper -->
+        <div class="swiper mySwiper2">
+            <div class="swiper-wrapper pb-2">
+                @forelse ($productsd as $product)
+                    <div class="swiper-slide border border-gray-200 hover:shadow-md group hover:shadow-[#60A3BD]/50 rounded-lg my-2 overflow-hidden {{$loop->last ? '' : 'mr-4'}}">
                         <article>
                             <figure class="relative overflow-hidden rounded-b-lg">
                                 <img loading="lazy" class=" w-full h-36 object-cover" src="{{ Storage::url($product->featuredImage()) }}" alt="{{$product->name}}">
@@ -40,20 +51,15 @@
                                 </a>
                             </div>
                         </article>
-                    </li>
+                    </div>
                 @empty
-                    <li>Sin productos por el momento.</li>
+                    <div>Sin productos por el momento.</div>
                 @endforelse
-            </ul>
-            <div class="hidden lg:block">
-                <button aria-label="Previous" class="glider-prev rounded-full w-10 h-10 bg-[#60A3BD]/75 text-white -translate-x-7">«</button>
-                <button aria-label="Next" class="glider-next rounded-full w-10 h-10 bg-[#60A3BD]/75 text-white translate-x-7">»</button>
             </div>
-            <div role="tablist" class="dots"></div>
+            <div class="swiper-pagination translate-y-3.5"></div>
         </div>
     @else 
         <div class="altura-loading">
-            {{-- <x-loading message="Cargando Productos..."/> --}}
             <div class="hidden lg:block">
                 <div class="flex flex-nowrap">
                     @for ($i = 1; $i <= 5; $i++)
@@ -109,3 +115,4 @@
         </div>
     @endif
 </div>
+ 

@@ -4,7 +4,7 @@
 
     /* EFECTO FADE AL CAMBIAR DE PAGINA TRANSICION SUAVE */
     body {
-    animation: fadein 0.5s ; 
+        animation: fadein 0.5s ; 
     }
     
     @keyframes fadein {

@@ -4,7 +4,7 @@
             <div class="w-full bg-white sticky top-16 rounded-md py-3 border border-gray-200" x-data="{ openFiltro: false }">
                 <div class="flex justify-between items-center">
                     <span class="text-center font-bold text-sm pl-2"><i class="fa-solid fa-filter pr-1"></i> {{ __('FILTROS') }}</span>
-                    <button x-on:click="openFiltro = !openFiltro" class="block sm:hidden">
+                    <button x-on:click="openFiltro = !openFiltro" class="block sm:hidden pr-2">
                         <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                             <path :class="{ 'hidden': openFiltro, 'inline-flex': !openFiltro }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M4 6h16M4 12h16M4 18h16" />
                             <path :class="{ 'hidden': !openFiltro, 'inline-flex': openFiltro }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12" />

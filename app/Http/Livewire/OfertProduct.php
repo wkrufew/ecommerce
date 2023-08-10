@@ -8,15 +8,15 @@ use Illuminate\Support\Facades\Cache;
 
 class OfertProduct extends Component
 {
-    public $products = [];
+    public $productso = [];
 
-    public function loadProduct()
+    public function loadProductO()
     {
-        $this->products = Cache::remember('oferts-featured', 60*60*24, function () {
+        $this->productso = Cache::remember('oferts-featured', 60*60*24, function () {
             return Product::select('id','slug','name','price','discount')->with('images')->where('status', 2)->where('discount', '>', 0)->take(10)->get();
         });
-        
-        $this->emit('glider-2');
+    
+        $this->emit('swiper3');
     }
     
     public function render()

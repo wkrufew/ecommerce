@@ -9,11 +9,11 @@ use Illuminate\Support\Facades\DB;
 
 class FeaturedProduct extends Component
 {
-    public $products = [];
+    public $productsd = [];
 
-    public function loadProduct()
+    public function loadProductD()
     {
-        $this->products = Cache::remember('products-featured', 60 * 60 * 24, function () {
+        $this->productsd = Cache::remember('products-featured', 60 * 60 * 24, function () {
             return Product::select('id','slug','name','price','discount')
                             ->with('images')
                             ->where('status', 2)
@@ -21,8 +21,8 @@ class FeaturedProduct extends Component
                             ->take(10)
                             ->get();
         });
-
-        $this->emit('glider-1');
+        
+        $this->emit('swiper2');
     }
 
     public function render()
