@@ -154,7 +154,7 @@
                                     </div>
                                 </li>
                             @empty
-                                <li>
+                                <li class="text-xs px-2">
                                     No se encuentran categorias por el momento
                                 </li>
                             @endforelse

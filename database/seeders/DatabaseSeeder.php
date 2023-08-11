@@ -31,13 +31,13 @@ class DatabaseSeeder extends Seeder
         Storage::makeDirectory('products');
 
         $this->call(UserSeeder::class);
-        $this->call(CategorySeeder::class);
+        /* $this->call(CategorySeeder::class);
         $this->call(SubcategorySeeder::class);
-        $this->call(ProductSeeder::class);
+        $this->call(ProductSeeder::class); */
         $this->call(ColorSeeder::class);
-        $this->call(ColorProductSeeder::class);
+        /* $this->call(ColorProductSeeder::class);
         $this->call(SizeSeeder::class);
         $this->call(ColorSizeSeeder::class);
-        $this->call(DepartmentSeeder::class);
+        $this->call(DepartmentSeeder::class); */
     }
 }
