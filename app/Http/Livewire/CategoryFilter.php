@@ -26,7 +26,7 @@ class CategoryFilter extends Component
         $this->resetPage();
     }
 
-    public function updatedMPrecio()
+    public function updatedPrecio()
     {
         $this->resetPage();
     }
@@ -51,11 +51,18 @@ class CategoryFilter extends Component
             });
         }
 
-        if ($this->precio === 'mayor') {
-            $productsQuery->orderBy('price', 'desc');
-        } elseif ($this->precio === 'menor') {
-            $productsQuery->orderBy('price', 'asc');
-        }
+        /* if ($this->precio === 'desc') { */
+            /* agregar el filtro para discount*/
+            /* $productsQuery->orderBy('discount', 'desc'); */
+            if ($this->precio) {
+                $productsQuery->orderByRaw('CASE WHEN discount > 0 THEN 0 ELSE 1 END, discount ' . $this->precio)
+                              ->orderBy('id',  $this->precio);
+            }
+        /* } elseif ($this->precio === 'asc') {
+            $productsQuery->orderByRaw('CASE WHEN discount > 0 THEN 0 ELSE 1 END, discount ' . $this->precio)
+                              ->orderBy('id',  $this->precio); */
+            /* $productsQuery->orderBy('discount', 'asc'); */
+        /* } */
 
         $products = $productsQuery->orderBy('id', $this->orden)->paginate(12);
 
@@ -69,57 +76,4 @@ class CategoryFilter extends Component
         $this->resetPage();
         $this->eliminandoFiltros = true;
     }
-     /* 
-    
-    protected $queryString = [
-        'orden' => ['except' => 'desc'],
-        'subcategoria',
-        'marca',
-    ];
-
-    public function mount()
-    {
-        $this->subcategoria = [];
-        $this->marca = [];
-    }
-
-    public function render(): View
-    {
-            $cacheKey = 'category-filter:' . md5(json_encode([
-                'subcategoria' => $this->subcategoria,
-                'marca' => $this->marca,
-                'orden' => $this->orden,
-                'page' => $this->page,
-            ]));
-    
-            $products = Cache::remember($cacheKey, 3600, function () {
-                        $productsQuery = Product::query()->with('images')->whereHas('subcategory.category', function (Builder $query) {
-                                                                                $query->where('id', $this->category->id);
-                                                                            });
-                        if ($this->subcategoria) {
-                            $this->eliminandoFiltros = true;
-                            $productsQuery->where('subcategory_id', $this->subcategoria);
-                        }
-                        if ($this->marca) {
-                            $this->eliminandoFiltros = true;
-                            $productsQuery->where('brand_id', $this->marca);
-                        }
-                        if ($this->eliminandoFiltros) {
-                            $this->resetPage();
-                            $this->eliminandoFiltros = false;
-                        }
-                        return $productsQuery->orderBy('id', $this->orden)->paginate(12);
-            });
-    
-            return view('livewire.category-filter', compact('products'));
-        }
-    
-        public function limpiar()
-        {
-            $this->orden = 'desc';
-            $this->reset(['subcategoria','marca']);
-            $this->resetPage();
-            $this->eliminandoFiltros = true;
-        }
-    */
 }

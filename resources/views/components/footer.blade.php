@@ -11,7 +11,7 @@
             </div>
 
             <p class="max-w-xl mx-auto mt-4 text-white text-sm">
-                Empresa dedicada a la venta, diseño e implementacion de sistemas eléctricos-electrónicos
+                Empresa dedicada a la venta, diseño e implementación de sistemas eléctricos-electrónicos
             </p>
             
             <div class="flex sm:items-center sm:justify-center space-x-4 mt-4">

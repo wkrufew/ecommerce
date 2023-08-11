@@ -33,12 +33,12 @@
                         </span>
                         <div class="pt-2 flex-col space-y-2 px-3">
                             <div class="first:w-full flex justify-between items-center">
-                                <span class="text-xs {{ $precio == 'mayor' ? 'text-[#60A3BD] font-semibold' : ''}}">{{ __('Mayor precio') }}</span>
-                                <input class="rounded-full checked:bg-[#60A3BD] checked:text-[#60A3BD] cursor-pointer" type="radio" wire:model="precio" value="mayor">
+                                <span class="text-xs {{ $precio == 'desc' ? 'text-[#60A3BD] font-semibold' : ''}}">{{ __('Mayor precio') }}</span>
+                                <input class="rounded-full checked:bg-[#60A3BD] checked:text-[#60A3BD] cursor-pointer" type="radio" wire:model="precio" value="desc">
                             </div>
                             <div class="w-full flex justify-between items-center">
-                                <span class="text-xs {{ $precio == 'menor' ? 'text-[#60A3BD] font-semibold' : ''}}">{{ __('Menor precio') }}</span>
-                                <input class="rounded-full checked:bg-[#60A3BD] checked:text-[#60A3BD] cursor-pointer" type="radio" wire:model="precio" value="menor">
+                                <span class="text-xs {{ $precio == 'asc' ? 'text-[#60A3BD] font-semibold' : ''}}">{{ __('Menor precio') }}</span>
+                                <input class="rounded-full checked:bg-[#60A3BD] checked:text-[#60A3BD] cursor-pointer" type="radio" wire:model="precio" value="asc">
                             </div>
                         </div>
                     </div>
@@ -104,7 +104,7 @@
                     <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-5 gap-y-4 md:gap-y-0 mt-6 md:mt-0">
                         @forelse ($products as $product)
                             <li class="h-72 md:h-64 w-72 md:w-52 mx-auto md:flex md:items-center md:justify-center overflow-hidden">
-                                <article class="bg-white hover:border border-gray-300 hover:shadow-md rounded-lg overflow-hidden cursor-pointer w-full">
+                                <article class="bg-white group hover:border border-gray-300 hover:shadow rounded-lg overflow-hidden cursor-pointer w-full">
                                     <figure class="relative overflow-hidden rounded-b-lg">
                                         @if ($product->images->isNotEmpty())
                                             <img loading="lazy" class="w-full h-40 md:h-32 object-cover" src="{{ Storage::url($product->featuredImage()) }}" alt="{{$product->name}}">  
@@ -140,7 +140,7 @@
                                                 <span class="">$ {{$product->price}}</span>
                                             @endif
                                         </p>
-                                        <a href="{{route('products.show', $product)}}" class="border border-[#60A3BD]  font-semibold mb-2 text-xs md:text-sm text-[#60A3BD] text-center rounded-lg shadow px-3 py-2 block mt-2 items-center justify-center">
+                                        <a href="{{route('products.show', $product)}}" class="border border-[#60A3BD] group-hover:bg-[#60A3BD] group-hover:text-white font-medium mb-2 text-xs md:text-sm text-[#60A3BD] text-center rounded-lg shadow px-3 py-2 block mt-2 items-center justify-center">
                                             Ver Producto
                                         </a>
                                     </div>
@@ -151,62 +151,62 @@
                         @endforelse
                     </ul>
                @else
-                   <ul class="space-y-3">
-                    @forelse ($products as $product)
-                        <li>
-                            <article class="grid grid-cols-2 md:grid-cols-4 border border-gray-300 rounded-md overflow-hidden hover:shadow-md group select-none">
-                                <figure class="relative overflow-hidden rounded-r-md md:rounded-r-none order-1 md:order-1">
-                                    @if ($product->images->isNotEmpty())
-                                        <img loading="lazy" class="w-full h-32 object-cover group-hover:scale-110 transition duration-300 ease-in-out" src="{{ Storage::url($product->featuredImage()) }}" alt="{{$product->name}}">  
-                                    @else
-                                        <img loading="lazy" class=" h-full object-cover" src="https://www.pexels.com/es-es/foto/iphone-7-dorado-encima-de-un-libro-al-lado-de-una-macbook-583848/" alt="{{$product->name}}">  
-                                    @endif
-                                    @if ($product->discount > 0)
-                                        <div class="absolute top-0 right-0 px-2 py-1 bg-red-500 text-white text-xs font-semibold rounded-bl-lg w-auto">
-                                            @php
-                                                $monto = $product->price - $product->discount;
-                                                $discount = ($monto / $product->price) * 100;
-                                            @endphp
-                                            - {{ intval($discount) }}%
-                                        </div>
-                                        <div class="absolute bottom-0 left-0 px-2 py-1 bg-red-500 text-white text-xs font-semibold rounded-tr-lg w-auto">Oferta</div>
-                                    @elseIf ($product->destacado)
-                                        <div class="absolute bottom-0 left-0 px-2 py-1 bg-[#60A3BD] text-white text-xs rounded-tr-lg w-auto">Destacado</div>
-                                    @elseIf($product->nuevo)
-                                        <div class="absolute bottom-0 left-0 px-2 py-1 bg-[#60A3BD] text-white text-xs rounded-tr-lg w-auto">Nuevo</div>
-                                    @endif
-                                </figure>
-                                <div class="col-span-2 p-2 order-3 md:order-2">
-                                    <article class="">
-                                        <span class="font-semibold text-[#60A3BD] uppercase">{{$product->name}}</span>
-                                        <p class="text-sm pt-2 line-clamp-2 md:line-clamp-4">
-                                            {{ $product->description }}
-                                        </p>
-                                    </article>
-                                </div>
-                                <div class="p-2 flex flex-col justify-center order-2 md:order-3">
-                                    <div class="flex justify-center">
-                                        @if ($product->discount > 0)
-                                            <span class="mr-4 font-semibold">$ {{$product->discount}}</span>
-                                            <span class="text-sm text-red-500 line-through mt-0.5">
-                                                $ {{$product->price}}
-                                            </span>
+                    <ul class="space-y-3">
+                        @forelse ($products as $product)
+                            <li>
+                                <article class="grid grid-cols-2 md:grid-cols-4 group border border-gray-300 rounded-md overflow-hidden hover:shadow-md group select-none">
+                                    <figure class="relative overflow-hidden rounded-r-md md:rounded-r-none order-1 md:order-1">
+                                        @if ($product->images->isNotEmpty())
+                                            <img loading="lazy" class="w-full h-32 object-cover group-hover:scale-110 transition duration-300 ease-in-out" src="{{ Storage::url($product->featuredImage()) }}" alt="{{$product->name}}">  
                                         @else
-                                            <span class="font-semibold">$ {{$product->price}}</span>
+                                            <img loading="lazy" class=" h-full object-cover" src="https://www.pexels.com/es-es/foto/iphone-7-dorado-encima-de-un-libro-al-lado-de-una-macbook-583848/" alt="{{$product->name}}">  
                                         @endif
+                                        @if ($product->discount > 0)
+                                            <div class="absolute top-0 right-0 px-2 py-1 bg-red-500 text-white text-xs font-semibold rounded-bl-lg w-auto">
+                                                @php
+                                                    $monto = $product->price - $product->discount;
+                                                    $discount = ($monto / $product->price) * 100;
+                                                @endphp
+                                                - {{ intval($discount) }}%
+                                            </div>
+                                            <div class="absolute bottom-0 left-0 px-2 py-1 bg-red-500 text-white text-xs font-semibold rounded-tr-lg w-auto">Oferta</div>
+                                        @elseIf ($product->destacado)
+                                            <div class="absolute bottom-0 left-0 px-2 py-1 bg-[#60A3BD] text-white text-xs rounded-tr-lg w-auto">Destacado</div>
+                                        @elseIf($product->nuevo)
+                                            <div class="absolute bottom-0 left-0 px-2 py-1 bg-[#60A3BD] text-white text-xs rounded-tr-lg w-auto">Nuevo</div>
+                                        @endif
+                                    </figure>
+                                    <div class="col-span-2 p-2 order-3 md:order-2">
+                                        <article class="">
+                                            <span class="font-semibold text-[#60A3BD] uppercase">{{$product->name}}</span>
+                                            <p class="text-sm pt-2 line-clamp-2 md:line-clamp-4">
+                                                {{ $product->description }}
+                                            </p>
+                                        </article>
                                     </div>
-                                    <div class="pt-2">
-                                        <a href="{{route('products.show', $product)}}" class="border border-[#60A3BD]  font-semibold mb-2 text-xs md:text-sm text-[#60A3BD] text-center rounded-lg shadow px-3 py-2 block mt-2 items-center justify-center">
-                                            Ver Producto
-                                        </a>
+                                    <div class="p-2 flex flex-col justify-center order-2 md:order-3">
+                                        <div class="flex justify-center">
+                                            @if ($product->discount > 0)
+                                                <span class="mr-4 font-semibold">$ {{$product->discount}}</span>
+                                                <span class="text-sm text-red-500 line-through mt-0.5">
+                                                    $ {{$product->price}}
+                                                </span>
+                                            @else
+                                                <span class="font-semibold">$ {{$product->price}}</span>
+                                            @endif
+                                        </div>
+                                        <div class="pt-2">
+                                            <a href="{{route('products.show', $product)}}" class="border border-[#60A3BD] group-hover:bg-[#60A3BD] group-hover:text-white font-semibold mb-2 text-xs md:text-sm text-[#60A3BD] text-center rounded-lg shadow px-3 py-2 block mt-2 items-center justify-center">
+                                                Ver Producto
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
-                            </article>
-                        </li>
-                    @empty
-                        <li class="w-full py-4">Sin resultados</li>
-                    @endforelse
-                   </ul>
+                                </article>
+                            </li>
+                        @empty
+                            <li class="w-full py-4">Sin resultados</li>
+                        @endforelse
+                    </ul>
                @endif
                 @if ($products->hasPages())
                     <div class="pt-3">

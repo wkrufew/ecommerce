@@ -16,11 +16,11 @@
         <div class="max-w-2xl mx-auto mt-6">
             <div class="grid grid-cols-1 lg:grid-cols-1">
                 <P class="text-center font-semibold text-base md:text-lg text-[#60A3BD] px-2">
-                    {{ __('Nuestra Historia') }}
+                    {{ __('Quienes Somos') }}
                 </P>
             </div>
             <p class="py-4 px-6 text-justify text-gray-800 text-sm">
-                {{ __('Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo necessitatibus quis ad id quas eius suscipit tempore voluptatem nesciunt labore. Tempore quaerat, commodi veritatis maxime dignissimos repellendus assumenda minima iusto!') }}
+                {{ __('Somos una empresa que inició sus actividades económicas el 08 de Noviembre del 2021 con RUC 0603926692001. Nos especializamos en la venta de componentes eléctricos, electrónicos y de automatización de las mejores marcas. Ofrecemos garantía en todos nuestros productos y servicios para nuestros clientes en todo el Ecuador. ¡Contáctanos hoy mismo y descubre cómo podemos ayudarte a mejorar tus proyectos!') }}
             </p>
         </div>
     </section>
@@ -29,13 +29,13 @@
             <div class="text-center text-gray-800">
                 <b class="text-[#60A3BD] text-center font-semibold text-base md:text-lg"> {{ __('Misión') }}</b><br>
                 <p class="px-6 text-justify mt-2 py-2 text-sm">
-                    {{ __('Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo necessitatibus quis ad id quas eius suscipit tempore voluptatem nesciunt labore. Tempore quaerat, commodi veritatis maxime dignissimos repellendus assumenda minima iusto!') }}
+                    {{ __('"Inspirar la transformación tecnológica al comercializar equipos tecnológicos innovadores y al implementar sistemas automatizados y ecosostenibles. Nuestro objetivo es proporcionar productos de excelente calidad y precio, permitiendo a nuestros clientes disfrutar de las bondades de las últimas tecnologías en su vida diaria."') }}
                 </p>
             </div>
             <div class="text-center text-gray-800">
                 <b class="text-[#60A3BD] text-center font-semibold text-base md:text-lg"> {{ __('Visión') }}</b><br>
                 <p class="px-6 text-justify py-2 text-sm">
-                     {{ __('Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo necessitatibus quis ad id quas eius suscipit tempore voluptatem nesciunt labore. Tempore quaerat, commodi veritatis maxime dignissimos repellendus assumenda minima iusto!') }}
+                     {{ __('"Ser reconocidos como el líder indiscutible a nivel nacional en la comercialización e implementación de sistemas de control y automatización. Nos destacamos por la integración de tecnologías ecológicas sostenibles, ofreciendo soluciones inteligentes que optimicen la eficiencia y la sustentabilidad en diversos sectores de la sociedad."') }}
                 </p>
             </div>
         </div>

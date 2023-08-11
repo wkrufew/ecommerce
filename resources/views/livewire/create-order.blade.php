@@ -5,13 +5,13 @@
                 <div class="mb-4">
                     <x-label value="Nombre de contácto" />
                     <x-input type="text" wire:model.defer="contact"
-                        placeholder="Ingrese el nombre de la persona que recibirá el producto" class="w-full" />
+                        placeholder="Ingrese el nombre de la persona que recibirá el producto" class="text-sm block w-full px-5 py-3 mt-1 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-[#60A3BD] focus:ring-[#60A3BD] focus:ring-opacity-40 dark:focus:border-[#60A3BD] focus:outline-none focus:ring" />
                     <x-input-error for="contact" />
                 </div>
                 <div>
                     <x-label value="Teléfono de contacto" />
                     <x-input type="text" wire:model.defer="phone"
-                        placeholder="Ingrese un número de telefono de contácto" class="w-full" />
+                        placeholder="Ingrese un número de telefono de contácto" class="text-sm block w-full px-5 py-3 mt-1 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-[#60A3BD] focus:ring-[#60A3BD] focus:ring-opacity-40 dark:focus:border-[#60A3BD] focus:outline-none focus:ring" />
                     <x-input-error for="phone" />
                 </div>
             </div>
@@ -45,7 +45,7 @@
                         <div>
                             <x-label value="Departamento" />
 
-                            <select class="form-control w-full" wire:model="department_id">
+                            <select class="text-sm block w-full px-5 py-3 mt-1 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-[#60A3BD] focus:ring-[#60A3BD] focus:ring-opacity-40 dark:focus:border-[#60A3BD] focus:outline-none focus:ring" wire:model="department_id">
 
                                 <option value="" disabled selected>Seleccione una Provincia</option>
 
@@ -61,9 +61,9 @@
                         <div>
                             <x-label value="Ciudad" />
 
-                            <select class="form-control w-full" wire:model="city_id">
+                            <select class="text-sm block w-full px-5 py-3 mt-1 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-[#60A3BD] focus:ring-[#60A3BD] focus:ring-opacity-40 dark:focus:border-[#60A3BD] focus:outline-none focus:ring" wire:model="city_id">
 
-                                <option value="" disabled selected>Seleccione un canton</option>
+                                <option value="" disabled selected>Seleccione un Cantón</option>
 
                                 @foreach ($cities as $city)
                                     <option value="{{ $city->id }}">{{ $city->name }}</option>
@@ -76,11 +76,11 @@
 
                         {{-- Parroquias --}}
                         <div>
-                            <x-label value="Distrito" />
+                            <x-label value="Parroquia" />
 
-                            <select class="form-control w-full" wire:model="district_id">
+                            <select class="text-sm block w-full px-5 py-3 mt-1 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-[#60A3BD] focus:ring-[#60A3BD] focus:ring-opacity-40 dark:focus:border-[#60A3BD] focus:outline-none focus:ring" wire:model="district_id">
 
-                                <option value="" disabled selected>Seleccione una parroquia</option>
+                                <option value="" disabled selected>Seleccione una Parróquia</option>
 
                                 @foreach ($districts as $district)
                                     <option value="{{ $district->id }}">{{ $district->name }}</option>
@@ -92,13 +92,13 @@
 
                         <div>
                             <x-label value="Dirección" />
-                            <x-input class="w-full" wire:model="address" type="text" />
+                            <x-input class="text-sm block w-full px-5 py-3 mt-1 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-[#60A3BD] focus:ring-[#60A3BD] focus:ring-opacity-40 focus:outline-none focus:ring" wire:model="address" type="text" />
                             <x-input-error for="address" />
                         </div>
 
                         <div class="col-span-2">
-                            <x-label value="Referencia" />
-                            <x-input class="w-full" wire:model="references" type="text" />
+                            <x-label value="Referencia/Información adicional" />
+                            <x-input class="text-sm block w-full px-5 py-3 mt-1 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-[#60A3BD] focus:ring-[#60A3BD] focus:ring-opacity-40 focus:outline-none focus:ring" wire:model="references" type="text" />
                             <x-input-error for="references" />
                         </div>
 
@@ -118,7 +118,7 @@
             <div class="bg-white rounded-lg shadow p-6 sticky top-16">
                 <ul>
                     @forelse (Cart::content() as $item)
-                        <li class="flex p-1 border border-gray-200">
+                        <li class="flex p-1 border border-gray-200 rounded-md">
                             <img class="h-16 w-24 object-cover rounded-md mr-4" src="{{ $item->options->image }}" alt="">
 
                             <article class="flex-1">
